@@ -4,7 +4,7 @@ const path = require('path'); // path module
 
 
 
-function day1() {
+function part1() {
     const input = fs.readFileSync(path.resolve(__dirname, 'day1.txt'), 'utf8');
     const lines = input.split('\n');
     const leftSide = [];
@@ -27,6 +27,27 @@ function day1() {
 
 }
 
-const output = day1();
+function part2() {
+    const input = fs.readFileSync(path.resolve(__dirname, 'day1.txt'), 'utf8');
+    const lines = input.split('\n');
+    const leftSide = [];
+    const rightSide = [];
+    for (line of lines) {
+        const split = line.split('  ');
+        leftSide.push(split[0]);
+        rightSide.push(split[1].trim());
+    }
+    let total = 0;
+    for (number of leftSide) {
+        const occurences = rightSide.filter(num => num === number).length;
+        const simililarity = occurences * number;
+        total += simililarity;
+    }
+    
+    return total
+
+}
+
+const output = part2();
 
 console.log('output is:', output);
